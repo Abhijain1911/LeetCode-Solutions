@@ -1,0 +1,32 @@
+class Solution {
+    public static List<String> letterCombinations(String digits) {
+        if(digits.length()==0){
+            List<String> as=new ArrayList<>();
+            return as;
+        }
+        
+        return helper("",digits);
+    }
+    public static List<String> helper(String p,String up){  
+        if(up.isEmpty()){
+            List<String> list=new ArrayList<>();
+            list.add(p);
+            return list;
+        }
+        List<String> ans=new ArrayList<>();
+        int ch=up.charAt(0)-'0';
+        int i=(ch-2)*3;
+        if(ch>7){
+            i+=1;
+        }
+        int len=i+3;
+        if(ch==7 || ch==9){
+            len+=1;
+        }
+        for(;i<len;i++){
+            char c=(char)('a'+i);
+            ans.addAll(helper(p+c, up.substring(1)));
+        }
+        return ans;
+    }
+}       
