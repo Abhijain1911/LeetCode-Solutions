@@ -1,0 +1,36 @@
+class Solution {
+    public boolean checkStraightLine(int[][] arr) {
+        int l=arr.length;
+        if(l==2){
+            return true;
+        }
+        double y=arr[1][1]-arr[0][1];
+        double x=arr[1][0]-arr[0][0];
+        double slope=0;
+        if(x==0){
+            slope=Double.MAX_VALUE;
+        }else{
+            slope=y/x;
+        }
+        for(int i=1;i<l-1;i++){
+            int[] a=arr[i];
+            int[] b=arr[i+1];
+            double s=diff(a,b);
+            if(slope!=s){
+                return false;
+            }
+        }
+        return true;
+    }
+    public double diff(int[] a,int[] b){
+        double y=b[1]-a[1];
+        double x=b[0]-a[0];
+        double slope=0;
+        if(x==0){
+            slope=Double.MAX_VALUE;
+        }else{
+            slope=y/x;
+        }
+        return slope;
+    }
+}
