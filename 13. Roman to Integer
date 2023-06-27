@@ -1,0 +1,38 @@
+class Solution {
+    public int romanToInt(String s) {
+        int val1=0;
+        int val2=0;
+        int ans=0;
+        for(int i=0;i<s.length();i++){
+            char curr=s.charAt(i);
+            if(i!=s.length()-1){
+                char next=s.charAt(i+1);
+                switch(next){
+                    case 'I': val2 = 1; break;
+                    case 'V': val2 = 5; break;
+                    case 'X': val2 = 10; break;
+                    case 'L': val2 = 50; break;
+                    case 'C': val2 = 100; break;
+                    case 'D': val2 = 500; break;
+                    case 'M': val2 = 1000; break;
+                }
+            }
+            switch(curr){
+                case 'I': val1 = 1; break;
+                case 'V': val1 = 5; break;
+                case 'X': val1 = 10; break;
+                case 'L': val1 = 50; break;
+                case 'C': val1 = 100; break;
+                case 'D': val1 = 500; break;
+                case 'M': val1 = 1000; break;
+            }
+            
+            if(val1<val2){
+                ans+=(val1*-1);
+            }else{
+                ans+=val1;
+            }
+        }
+        return ans;
+    }
+}
