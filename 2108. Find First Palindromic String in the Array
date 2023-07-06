@@ -1,0 +1,22 @@
+class Solution {
+    public String firstPalindrome(String[] words) {
+        for(String i:words){
+            if(reverseAndCheck(i)){
+                return i;
+            }
+        }
+        return "";
+    }
+    public boolean reverseAndCheck(String s){
+        StringBuilder sb=new StringBuilder();
+        int a=0;
+        for(int i=s.length()-1;i>=0;i--){
+            sb.insert(a,s.charAt(i));
+            a++;
+        }
+        if(s.compareTo(sb.toString())==0){
+            return true;
+        }
+        return false;
+    }
+}
