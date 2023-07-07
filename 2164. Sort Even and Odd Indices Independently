@@ -1,0 +1,66 @@
+class Solution {
+    public int[] sortEvenOdd(int[] nums) {
+        if(nums.length<3){
+            return nums;
+        }
+        int sizeEven=0;
+        int sizeOdd=nums.length/2;
+        if(nums.length%2==0){
+            sizeEven=nums.length/2;
+        }else{
+            sizeEven=(nums.length/2)+1;            
+        }
+        int[] arrEven= new int[sizeEven];
+        int[] arrOdd=new int [sizeOdd];
+        sizeEven=0;
+        sizeOdd=0;
+        for(int i=0;i<nums.length;i++){
+            if(i%2==0){
+                arrEven[sizeEven]=nums[i];
+                sizeEven++;
+            }else{
+                arrOdd[sizeOdd]=nums[i];
+                sizeOdd++;
+            }
+        }
+        arrEven=sortEven(arrEven);
+        arrOdd=sortOdd(arrOdd);
+        sizeEven=0;
+        sizeOdd=0;
+        for(int i=0;i<nums.length;i++){
+            if(i%2==0){
+                nums[i]=arrEven[sizeEven];
+                sizeEven++;
+            }
+           else{
+                nums[i]=arrOdd[sizeOdd];
+                sizeOdd++;
+            }
+        }
+        return nums;
+    }
+    public int[] sortEven(int[] arr){
+        for(int i=0;i<arr.length;i++){
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[i]>arr[j]){
+                    int temp=arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }
+        return arr;
+    }
+    public int[] sortOdd(int[] arr){
+        for(int i=0;i<arr.length;i++){
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[i]<arr[j]){
+                    int temp=arr[i];
+                    arr[i]=arr[j];
+                    arr[j]=temp;
+                }
+            }
+        }
+        return arr;
+    }
+}
