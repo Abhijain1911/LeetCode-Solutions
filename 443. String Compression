@@ -1,0 +1,27 @@
+class Solution {
+    public int compress(char[] chars) {
+        if(chars.length==1){
+            return 1;
+        }
+        int i=0;
+        StringBuilder s=new StringBuilder("");
+        while(i<chars.length){
+            int j=i+1;
+            int count=1;
+            char curr=chars[i];
+            while(j<chars.length && curr==chars[j]){
+                count++;
+                j++;
+            }
+            s.append(curr);
+            if(count>1){
+                s.append(count);
+            }
+            i=j;
+        }
+        for(int x=0;x<s.length();x++){
+            chars[x]=s.charAt(x);
+        }
+        return s.length();
+    }
+}
