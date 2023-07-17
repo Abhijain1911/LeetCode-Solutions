@@ -1,0 +1,27 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        int ans=0;
+        if(nums.length<1){
+            return nums.length;
+        }
+        ArrayList<Integer> arr=new ArrayList<>();
+        arr.add(nums[0]);
+        int j=1;
+        for(int i=0;i<nums.length-1;i++){
+            if(nums[i]==nums[j] && arr.get(arr.size()-1)!=nums[i]){
+                arr.add(nums[i]);
+                ans++;
+            }else {
+                if(arr.get(arr.size()-1)!=nums[j]){
+                    arr.add(nums[j]);
+                }
+                
+            }
+            j++;
+        }
+        for(int i=0;i<arr.size();i++){
+            nums[i]=arr.get(i);
+        }
+        return arr.size();
+    }
+}
