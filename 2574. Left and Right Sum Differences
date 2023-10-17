@@ -1,0 +1,20 @@
+class Solution {
+    public int[] leftRightDifference(int[] nums) {
+        int left=0;
+        int right=0;
+        for(int i=1;i<nums.length;i++){
+            left+=nums[i];
+        }
+        int diff=Math.abs(left-right);
+        int a=nums[0];
+        nums[0]=diff;
+        for(int i=1;i<nums.length;i++){
+            left-=nums[i];
+            right+=a;
+            diff=Math.abs(left-right);
+            a=nums[i];
+            nums[i]=diff;
+        }
+        return nums;
+    }
+}
