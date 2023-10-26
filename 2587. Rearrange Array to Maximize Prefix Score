@@ -1,0 +1,19 @@
+class Solution {
+    public int maxScore(int[] nums) {
+        Arrays.sort(nums);
+        int e=nums.length-1;
+        long sum=0;
+        int count=0;
+        if(nums[nums.length-1]==0){
+            return 0;
+        }
+        while(e>=0){
+            sum+=nums[e];
+            e--;
+            if(sum>0){
+                count++;
+            }
+        }
+        return count;
+    }
+}
