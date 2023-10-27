@@ -1,0 +1,16 @@
+class Solution {
+    public String reversePrefix(String word, char ch) {
+        int idx=word.indexOf(Character.toString(ch));
+        String newstr=reverse(word,"",idx);
+        newstr+=word.substring(idx+1);
+        return newstr;
+    }
+    public String reverse(String word,String newstr,int idx){
+        if(idx==-1){
+            return newstr;
+        }
+        char c=word.charAt(idx);
+        idx--;
+        return reverse(word,newstr+c,idx);
+    }
+}
