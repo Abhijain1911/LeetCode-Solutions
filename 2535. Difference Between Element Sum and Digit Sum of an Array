@@ -1,0 +1,21 @@
+class Solution {
+    public int differenceOfSum(int[] nums) {
+        int ele=0;
+        int digi=0;
+        for(int i:nums){
+            ele+=i;
+        }
+        for(int i:nums){
+            if(i<10){
+                digi+=i;
+            }else{
+                while(i!=0){
+                    int rem=i%10;
+                    digi+=rem;
+                    i/=10;
+                }
+            }
+        }
+        return ele-digi;
+    }
+}
