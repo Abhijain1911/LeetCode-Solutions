@@ -1,0 +1,24 @@
+class Solution {
+    public boolean backspaceCompare(String s, String t) {
+        String a=helper(s);
+        String b=helper(t);
+        if(a.compareTo(b)==0){
+            return true;
+        }
+        return false;
+    }
+    public String helper(String a){
+        Stack<Character> st=new Stack<>();
+        for(int i=0;i<a.length();i++){
+            char c=a.charAt(i);
+            if(c!='#'){
+                st.push(c);
+            }else{
+                if(!st.isEmpty()){
+                    st.pop();
+                }
+            }
+        }
+        return st.toString();
+    }
+}
